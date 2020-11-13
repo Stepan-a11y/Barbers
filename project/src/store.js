@@ -2,18 +2,26 @@ let state = {
      orders: [
          { id: 1, nameMaster: "Dmitry Sokolow", dateOrder: "12 september 2020 - 12:20"},
          { id: 2, nameMaster: "Petr Ivanow", dateOrder: "23 september 2020 - 14:40"}
-     ]
+     ],
+     inform: {}
 }
 
 
 
-const addOrder = () => {
+export const addOrder = (order) => {
+    let newOrder = {
+        id:3,
+        nameMaster: state.inform.nameMaster,
+        date: state.inform.date
+    }
+debugger;
+    state.orders.push(newOrder);
 
 }
 
 
-const updateInform = () => {
-
+export const updateInform = (newInform) => {
+    state.inform = newInform;
 }
 
 

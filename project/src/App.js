@@ -1,16 +1,25 @@
 import './App.css';
+import { Container, Row, Col } from 'react-bootstrap';
 import Header from './components/Header/Header';
-import Profile from './components/Header/Profile';
-import { Route } from 'react-router-dom';
+import Profile from './components/Profile/Profile';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
-const App = () => {
+
+const App = (props) => {
   return (
-    <div className="App">
-      <Header />
-      <Route path = "profile" render = {Profile} />
-    </div>
+    <BrowserRouter>
+      <Container>
+        <Header />
+          <Row>
+            <Col className = "mt-5">
+              <Route path = "/profile" render = { () => <Profile state={props.state.orders} addOrder={props.addOrder} updateInforfm={props.updateInforfm}/> } />
+            </Col>
+          </Row>
+      </Container>
+    </BrowserRouter>
   );
+  debugger;
 }
 
 export default App;
