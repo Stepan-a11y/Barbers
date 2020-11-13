@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
-import state from "./store"
-import { addOrder, updateInform } from "./store"
+import state from "./store";
+import { addOrder} from "./store";
+import { update } from "./store";
 
 
 
 
-ReactDOM.render(<App state={state} addOrder={ addOrder } updateInform={ updateInform }/>,document.getElementById('root'));
+
+ReactDOM.render(<App state={state} addOrder={ addOrder } update={ update }/>,document.getElementById('root'));
 
 
 

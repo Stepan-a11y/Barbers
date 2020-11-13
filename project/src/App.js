@@ -7,19 +7,21 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 
 const App = (props) => {
+
+  debugger;
   return (
     <BrowserRouter>
       <Container>
         <Header />
           <Row>
             <Col className = "mt-5">
-              <Route path = "/profile" render = { () => <Profile state={props.state.orders} addOrder={props.addOrder} updateInforfm={props.updateInforfm}/> } />
+              <Route path = "/profile" render = { () => <Profile orders={props.state.orders} inform={props.state.inform} addOrder={props.addOrder} update={props.update} /> } />
             </Col>
           </Row>
       </Container>
     </BrowserRouter>
   );
-  debugger;
+
 }
 
 export default App;
