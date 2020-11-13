@@ -1,5 +1,7 @@
 
-debugger;
+let rerender = () => {
+    console.log('changed');
+}
 
 let state = {
      orders: [
@@ -14,26 +16,30 @@ let state = {
      
 }
 
-debugger;
+
 
 
 export let addOrder = () => {
-    
     let newOrder = {
         id:3,
         nameMaster: state.inform.newNameMaster,
-        date: state.inform.newDateOrder
+        dateOrder: state.inform.newDateOrder
     }
     state.orders.push(newOrder);
-
+    debugger;
+    rerender(state);
 }
 
 
 export let update = (data) => {
 
    state.inform = data;
-   debugger;
+   rerender(state);
 }
 
+
+export const subscribe = (observer) => {
+        rerender = observer;
+}
 
 export default state;

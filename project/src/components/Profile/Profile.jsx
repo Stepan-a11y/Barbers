@@ -30,8 +30,8 @@ const Profile = (props) => {
     let informChange = () => {
         debugger;
         let order = {
-            NameMaster: inputTextMaster.current.value,
-            DateOrder: inputTextDate.current.value
+            newNameMaster: inputTextMaster.current.value,
+            newDateOrder: inputTextDate.current.value
     }
         props.update(order);
     }
