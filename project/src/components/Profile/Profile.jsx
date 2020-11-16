@@ -1,8 +1,12 @@
 import React from "react";
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { addOrderAC, updateInformAC } from "../../reducers/profileReducer";
 
 let inputTextMaster = React.createRef();
 let inputTextDate = React.createRef();
+
+
+
 
 let Orders = (props) => {
     return(
@@ -22,25 +26,24 @@ const Profile = (props) => {
 
 
 
-
-    let orderElem = props.orders.map( o => <Orders nameMaster={o.nameMaster} dateOrder={o.dateOrder} />);
-
+    let orderElem = props.profile.orders.map( o => <Orders nameMaster={o.nameMaster} dateOrder={o.dateOrder} />);
 
 
+debugger;
     let informChange = () => {
-        debugger;
+        
         let order = {
             newNameMaster: inputTextMaster.current.value,
             newDateOrder: inputTextDate.current.value
     }
-        props.update(order);
+        props.dispatch(updateInformAC(order));
     }
    
-    debugger;
+    
 
 
     let addOrder = () => {  
-        props.addOrder();      
+        props.dispatch(addOrderAC());      
     }
 
 
@@ -50,11 +53,11 @@ const Profile = (props) => {
            <Form>
                 <Form.Group controlId="formGroupEmail">
                     <Form.Label>Имя мастера</Form.Label>
-                    <Form.Control onChange={ informChange } ref={inputTextMaster} value={props.inform.newNameMaster} type="text"/>
+                    <Form.Control onChange={ informChange } ref={inputTextMaster} value={props.profile.inform.newNameMaster} type="text"/>
                 </Form.Group>
                 <Form.Group controlId="formGroupPassword">
                     <Form.Label>Дата записи</Form.Label>
-                    <Form.Control onChange={ informChange } ref={inputTextDate} value={props.inform.newDateOrder} type="text" />
+                    <Form.Control onChange={ informChange } ref={inputTextDate} value={props.profile.inform.newDateOrder} type="text" />
                 </Form.Group>
 
                 <Button onClick = { addOrder } >Записаться</Button>

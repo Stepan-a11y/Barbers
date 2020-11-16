@@ -3,21 +3,23 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
-import state, { subscribe } from "./store";
-import { addOrder} from "./store";
-import { update } from "./store";
+import store from "./store";
 
 
 
 let rerender = (state) => {
 
-ReactDOM.render(<App state={state} addOrder={ addOrder } update={ update }/>,document.getElementById('root'));
+ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />,document.getElementById('root'));
 
 }
 
-rerender(state);
+rerender(store.getState());
 
-subscribe(rerender);
+store.subscribe(() => {
+    let state = store.getState();
+    rerender(state);
+});
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

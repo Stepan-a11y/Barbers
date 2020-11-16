@@ -8,14 +8,14 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 const App = (props) => {
 
-  debugger;
+debugger;
   return (
     <BrowserRouter>
       <Container>
         <Header />
           <Row>
             <Col className = "mt-5">
-              <Route path = "/profile" render = { () => <Profile orders={props.state.orders} inform={props.state.inform} addOrder={props.addOrder} update={props.update} /> } />
+              <Route path = "/profile" render = { () => <Profile profile={props.state.profile} dispatch={props.dispatch} /> } />
             </Col>
           </Row>
       </Container>
