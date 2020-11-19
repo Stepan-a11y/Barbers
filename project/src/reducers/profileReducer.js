@@ -23,11 +23,15 @@ const profileReducer = (state = initialState, action) => {
                     nameMaster: state.inform.newNameMaster,
                     dateOrder: state.inform.newDateOrder
                 }
-                state.orders.push(newOrder);
-                return state;
+                let copyState = {...state};
+                copyState.orders = [...state.orders];
+                copyState.orders.push(newOrder);
+                return copyState;
             case UPDATE_INFORM:
-                state.inform = action.order;
-                return state;
+                let copyStateIn = {...state};
+                //copyStateIn.inform = {...state.inform};
+                copyStateIn.inform = action.order;
+                return copyStateIn;
             default:
                 return state;
         }

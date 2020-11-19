@@ -4,20 +4,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import store from "./store";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 
 
-let rerender = (state) => {
-
-ReactDOM.render(<App state={state} dispatch={store.dispatch.bind(store)} />,document.getElementById('root'));
-
+let rerender = () => {
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App /*dispatch={store.dispatch.bind(store)}*/ />
+        </Provider>
+    </BrowserRouter>,document.getElementById('root'));
 }
-
-rerender(store.getState());
+debugger;
+rerender();
 
 store.subscribe(() => {
-    let state = store.getState();
-    rerender(state);
+    rerender();
 });
 
 
