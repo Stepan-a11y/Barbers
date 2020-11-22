@@ -7,7 +7,7 @@ const Masters = require('../schemas/masters');
 //Попытка отобразить список студентов из базы на странице
 
 
-router.get('/masters', (req, res) => {
+router.post('/masters', (req, res) => {
      Masters.find({}, (err, masters) => {
        if(err) throw err;
        return res.send(masters)/*status(200).json({
