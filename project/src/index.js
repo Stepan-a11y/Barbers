@@ -13,7 +13,7 @@ let rerender = () => {
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <App /*dispatch={store.dispatch.bind(store)}*/ />
+            <App />
         </Provider>
     </BrowserRouter>,document.getElementById('root'));
 }

@@ -4,25 +4,6 @@ import {updateInformAC, addOrderAC} from '../../reducers/profileReducer';
 import Profile from './Profile';
 
 
-
-/*
- let informChange = () => {
-        
-    let order = {
-        newNameMaster: inputTextMaster.current.value,
-        newDateOrder: inputTextDate.current.value
-}
-    props.dispatch(updateInformAC(order));
-}
-
-
-
-
-let addOrder = () => {  
-    props.dispatch(addOrderAC());      
-}
-*/
-
 debugger;
 
 let mapStateToProps = (state) => {

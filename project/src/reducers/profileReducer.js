@@ -29,7 +29,6 @@ const profileReducer = (state = initialState, action) => {
                 return copyState;
             case UPDATE_INFORM:
                 let copyStateIn = {...state};
-                //copyStateIn.inform = {...state.inform};
                 copyStateIn.inform = action.order;
                 return copyStateIn;
             default:
