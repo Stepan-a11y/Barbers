@@ -15,11 +15,12 @@ let Masters = (props) => {
             )*/
                 debugger;
 
-        axios.get("https://localhost:3001")
+        axios.get("http://127.0.0.1:3001/api/masters")
         .then(response => {
             console.log(response);
-            //props.setMasters(response.masters.firstName)
-        });
+            props.setMasters(response.data)
+        })
+    
     }
 
 debugger;
