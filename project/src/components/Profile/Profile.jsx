@@ -48,7 +48,7 @@ const Profile = (props) => {
 
 
     return(
-        <Container>
+        <Container className="mt-5">
            <Form>
                 <Form.Group controlId="formGroupEmail">
                     <Form.Label>Имя мастера</Form.Label>

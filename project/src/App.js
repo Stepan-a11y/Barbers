@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route } from 'react-router-dom';
 import MastersContainer from './components/Masters/MastersContainer';
+import Main from './components/Main/Main'
 
 
 
@@ -15,7 +16,8 @@ debugger;
       <Container>
         <Header />
           <Row>
-            <Col className = "mt-5">
+            <Col>
+              <Route path = "/main" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/masters" render = { () => <MastersContainer /> } />
             </Col>

@@ -4,7 +4,7 @@ const router = express.Router();
 const conDB = require('../conDB');
 const Masters = require('../schemas/masters');
 
-//Попытка отобразить список студентов из базы на странице
+//Запрос мастеров из базы данных
 
 
 router.get('/masters', (req, res) => {
@@ -12,10 +12,7 @@ router.get('/masters', (req, res) => {
   res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
      Masters.find({}, (err, masters) => {
        if(err) throw err;
-       return res.send(masters)/*status(200).json({
-         status:'success',
-         masters: masters
-       })*/
+       return res.send(masters)
      });
 });
 

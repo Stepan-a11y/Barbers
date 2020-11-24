@@ -22,12 +22,4 @@ const MasterShema = mongoose.Schema({
   const Masters = module.exports = mongoose.model('Masters', MasterShema);
 
 
-  /*let master = new Masters({avatar:"PHOTO", firstName:"Vladimyr", lastName:"Davidovich", masterOf:"Barber, 5 years"});
 
-  master.save(function(err){
-    mongoose.disconnect();
-     
-    if(err) return console.log(err);
-     
-    console.log("Сохранен объект user", master);
-});*/
