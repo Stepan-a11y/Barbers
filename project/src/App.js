@@ -8,22 +8,21 @@ import Main from './components/Main/Main'
 
 
 
+
 const App = (props) => {
 
 debugger;
   return (
-    
       <Container>
         <Header />
           <Row>
             <Col>
-              <Route path = "/main" render ={() => <Main />}/>
+              <Route exact path = "/" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/masters" render = { () => <MastersContainer /> } />
             </Col>
           </Row>
       </Container>
-    
   );
 
 }

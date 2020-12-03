@@ -1,0 +1,34 @@
+.navBrand a:link{
+    font-size: x-large;
+    text-decoration: none;
+}
+
+
+
+.navBrand a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.navBrand a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+
+.navLink a:link{
+    font-size: large;
+    text-decoration: none;
+}
+
+
+
+.navLink a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.navLink a:visited{
+    color: white;
+    text-decoration: none;
+}

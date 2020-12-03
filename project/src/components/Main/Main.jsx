@@ -1,13 +1,13 @@
 import React from 'react';
-import { Row, Carousel, Container, Jumbotron } from 'react-bootstrap';
-import image from '../../local/carouselImage.jpg'
+import { Row, Carousel, Container, Jumbotron, Col } from 'react-bootstrap';
+import image from '../../local/carouselImage.png'
 
  
 class Main extends React.Component {
     render(){
         return(
             <Container>
-            <Row>
+            <Row>          
                 <Carousel className="carSize">
                     <Carousel.Item>
                     <img
@@ -18,13 +18,9 @@ class Main extends React.Component {
                     </Carousel.Item>
                 </Carousel>
             </Row>
-                    <Jumbotron>
-                        <h1>Hello, world!</h1>
-                            <p>
-                                This is a simple hero unit, a simple jumbotron-style component for calling
-                                extra attention to featured content or information.
-                            </p>
-                    </Jumbotron>
+             <Row>
+                   
+            </Row>
             </Container>
 
         )
