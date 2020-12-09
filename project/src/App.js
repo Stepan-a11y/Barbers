@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route } from 'react-router-dom';
 import MastersContainer from './components/Masters/MastersContainer';
+import ServicesContainer from './components/Services/ServicesContainer';
 import Main from './components/Main/Main'
 
 
@@ -20,6 +21,7 @@ debugger;
               <Route exact path = "/" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/masters" render = { () => <MastersContainer /> } />
+              <Route path = "/services" render = { () => <ServicesContainer /> } />
             </Col>
           </Row>
       </Container>

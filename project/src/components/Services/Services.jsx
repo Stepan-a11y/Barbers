@@ -1,35 +1,34 @@
 import React from 'react';
-import './Masters.css';
 import * as axios from 'axios';
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
-import image from '../../local/avatar.png'
 
 
-class Masters extends React.Component {
+
+class Services extends React.Component {
 
     componentDidMount(){
-        axios.get("http://127.0.0.1:3001/api/masters")
+        axios.get("http://127.0.0.1:3001/api/services")
         .then(response => {
             console.log(response);
-            this.props.setMasters(response.data)
+            this.props.setServices(response.data)
         })
     }
+    
     
     render(){
         return(
         <Container className="mt-5">  
             { 
-            this.props.masters.map(m => <Row key={m.id} className="block">
+            this.props.services.map(m => <Row key={m.id} className="block">
                 <Col className="mb-3">
                 <Card>
                     <Card.Body>
                         <Card.Title className="mr-2">
-                        <Image src={image} roundedCircle className="size mr-4"/>
-                        <span className="mr-2">{m.firstName}</span>
-                        <span>{m.lastName}</span>
+                        <span className="mr-2">{m.name}</span>
+                        <span>{m.price}</span>
                         </Card.Title>
                             <Card.Text>
-                            <span className="ml-1">{m.masterOf}</span>
+                            <span className="ml-1">{m.about}</span>
                             </Card.Text>
                     </Card.Body>
                 </Card>
@@ -42,4 +41,9 @@ class Masters extends React.Component {
 }
 
 
-export default Masters;
+
+
+
+
+
+export default Services;

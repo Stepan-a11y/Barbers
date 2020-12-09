@@ -4,7 +4,6 @@ import Masters from './Masters';
 import {setMastersAC} from '../../reducers/mastersReducer'
 
 
-
 let mapStateToProps = (state) => {
     return {
         masters: state.mastersPage.masters
@@ -18,11 +17,6 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-
-
-
-
 
 const MastersContainer = connect( mapStateToProps, mapDispatchToProps )(Masters);
 

@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const conDB = require('../conDB');
-const Masters = require('../schemas/masters');
+const Services = require('../schemas/services');
 
-//Запрос мастеров из базы данных
+//Запрос услуг из базы данных
 
-router.get('/masters', (req, res) => {
+router.get('/services', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
-     Masters.find({}, (err, masters) => {
+     Services.find({}, (err, services) => {
        if(err) throw err;
-       return res.send(masters)
+       return res.send(services)
      });
 });
 
