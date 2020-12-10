@@ -1,0 +1,9 @@
+
+.firstImg {
+    height: 600px;
+}
+
+.secondImg {
+    height: 600px;
+    transform: translateY(-20%);
+}

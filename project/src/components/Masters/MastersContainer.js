@@ -1,8 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Masters from './Masters';
-import {setMastersAC} from '../../reducers/mastersReducer'
+import {setMasters, getMastersThunk} from '../../reducers/mastersReducer';
 
+
+class MastersContainer extends React.Component{
+
+     componentDidMount(){
+        this.props.getMastersThunk();
+    }
+
+    render(){
+        return(
+            <Masters masters={this.props.masters} />
+        )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -10,15 +23,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setMasters: (masters) => {
-            dispatch(setMastersAC(masters));
-        }
-    }
-}
-
-const MastersContainer = connect( mapStateToProps, mapDispatchToProps )(Masters);
-
-
-export default MastersContainer;
+export default connect( mapStateToProps, {setMasters, getMastersThunk} )(MastersContainer);

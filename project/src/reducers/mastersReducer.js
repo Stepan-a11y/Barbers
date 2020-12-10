@@ -1,13 +1,10 @@
+import { getMasters } from '../api/mastersAPI';
+
 const SET_MASTERS = 'SET_MASTERS';
-
-
 
 let initialState = { 
     masters: []
 };
-
-
-
 
 
 const mastersReducer = (state = initialState, action) => {
@@ -20,10 +17,16 @@ const mastersReducer = (state = initialState, action) => {
 
 }
 
+export const setMasters = (masters) => ({type:SET_MASTERS, masters})
 
-export const setMastersAC = (masters) => ({type:SET_MASTERS, masters})
-
-
-
+export const getMastersThunk = () => {
+    return (dispatch) => {
+    getMasters().then(data => 
+        { 
+            dispatch(setMasters(data));
+        }
+    );
+    }
+}
 
 export default mastersReducer;

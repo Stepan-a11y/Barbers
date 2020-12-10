@@ -1,20 +1,12 @@
 import React from 'react';
 import './Masters.css';
-import * as axios from 'axios';
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
-import image from '../../local/avatar.png'
+import image from '../../local/avatar.png';
+
 
 
 class Masters extends React.Component {
 
-    componentDidMount(){
-        axios.get("http://127.0.0.1:3001/api/masters")
-        .then(response => {
-            console.log(response);
-            this.props.setMasters(response.data)
-        })
-    }
-    
     render(){
         return(
         <Container className="mt-5">  
