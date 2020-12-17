@@ -1,3 +1,5 @@
+import { getServices } from '../api/servicesAPI';
+
 const SET_SERVICES = 'SET_SERVICES';
 
 let initialState = { 
@@ -16,6 +18,17 @@ const servicesReducer = (state = initialState, action) => {
 }
 
 
-export const setServicesAC = (services) => ({type:SET_SERVICES, services})
+export const setServices = (services) => ({type:SET_SERVICES, services})
+
+
+export const getServicesThunk = () => {
+    return (dispatch) => {
+        getServices().then(data => 
+            { 
+                dispatch(setServices(data));
+            }
+        );
+        }
+}
 
 export default servicesReducer;

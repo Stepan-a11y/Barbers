@@ -1,8 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Services from './Services';
-import {setServicesAC} from '../../reducers/servicesReducer'
+import {setServices, getServicesThunk} from '../../reducers/servicesReducer'
 
+
+
+class ServicesContainer extends React.Component {
+
+        componentDidMount(){
+            this.props.getServicesThunk();
+        }
+
+        render() {
+            return <Services services={this.props.services} />
+        }
+
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -10,14 +23,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setServices: (services) => {
-            dispatch(setServicesAC(services));
-        }
-    }
-}
 
-const ServicesContainer = connect( mapStateToProps, mapDispatchToProps )(Services);
 
-export default ServicesContainer;
+export default connect( mapStateToProps, { setServices, getServicesThunk } )(ServicesContainer);
+

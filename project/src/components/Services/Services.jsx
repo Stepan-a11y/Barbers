@@ -1,20 +1,10 @@
 import React from 'react';
-import * as axios from 'axios';
-import { Container, Row, Col, Card, Image } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 
 
 class Services extends React.Component {
-
-    componentDidMount(){
-        axios.get("http://127.0.0.1:3001/api/services")
-        .then(response => {
-            console.log(response);
-            this.props.setServices(response.data)
-        })
-    }
-    
-    
+ 
     render(){
         return(
         <Container className="mt-5">  
