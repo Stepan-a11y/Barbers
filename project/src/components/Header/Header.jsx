@@ -14,6 +14,7 @@ const Header = () => {
                         <Nav.Link className="navLink mr-5"><NavLink  NavLink to="masters" className="mr-5">Мастера</NavLink></Nav.Link>
                         <Nav.Link className="navLink mr-5"><NavLink  NavLink to="services" className="mr-5" >Услуги</NavLink></Nav.Link>
                         <Nav.Link className="navLink mr-5"><NavLink  NavLink to="profile" className="mr-5">Профиль</NavLink></Nav.Link>
+                        <Nav.Link className="navLink mr-5"><NavLink  NavLink to="login" className="mr-5">Войти</NavLink></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
         </Navbar>

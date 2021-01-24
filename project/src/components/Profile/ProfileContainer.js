@@ -4,7 +4,7 @@ import {updateInformAC, addOrderAC} from '../../reducers/profileReducer';
 import Profile from './Profile';
 
 
-debugger;
+
 
 let mapStateToProps = (state) => {
     return {

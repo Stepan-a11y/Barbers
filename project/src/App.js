@@ -6,19 +6,19 @@ import { Route } from 'react-router-dom';
 import MastersContainer from './components/Masters/MastersContainer';
 import ServicesContainer from './components/Services/ServicesContainer';
 import Main from './components/Main/Main'
+import Login from './components/Login/Login';
 
 
 
 
 const App = (props) => {
 
-debugger;
   return (
       <Container>
         <Header />
           <Row>
             <Col>
-              <Route exact path = "/" render ={() => <Main />}/>
+              <Route exact path = "/" render ={() => <Login />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/masters" render = { () => <MastersContainer /> } />
               <Route path = "/services" render = { () => <ServicesContainer /> } />

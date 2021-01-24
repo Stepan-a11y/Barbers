@@ -17,7 +17,6 @@ ReactDOM.render(
         </Provider>
     </BrowserRouter>,document.getElementById('root'));
 }
-debugger;
 rerender();
 
 store.subscribe(() => {
