@@ -22,16 +22,6 @@ const UserShema = mongoose.Schema({
   
     const User = module.exports = mongoose.model('User', UserShema);
 
-
-    module.exports.getUserByLogin = (email, callback) => {
-        const query = {email: email};
-        User.findOne(query, callback);
-     };
-
-    module.exports.getUserById = (id, callback) => {
-        User.findById(id, callback);
-     };
-
      module.exports.compPass = (inputPassword, dbPassword, callback) => {
         bcrypt.compare(inputPassword, dbPassword, (err, isMatch) => {
           if(err) throw err;

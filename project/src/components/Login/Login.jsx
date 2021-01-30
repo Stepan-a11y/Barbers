@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button } from 'react-bootstrap'
-import { loginThunk } from '../../reducers/authReducer'
+import { loginThunk, authThunk } from '../../reducers/authReducer'
 import { connect } from 'react-redux';
 import './Login.css';
 
 
+
 const FormLogin = (props) => {
+    
     return (
             <form onSubmit={props.handleSubmit}>
                 <Col>
@@ -26,7 +28,16 @@ const FormLogin = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(FormLogin)
 
+
+
+
 const Login = (props) => {
+
+
+    useEffect( () => {
+        props.authThunk();
+    }, [props])
+
 
     const onSubmit = (formData) => {
      props.loginThunk(formData.email, formData.password);
@@ -48,4 +59,4 @@ const mapStateToProps = (state) => ({
     lastName: state.auth.lastName
 })
 
-export default connect (mapStateToProps, {loginThunk})(Login)
+export default connect (mapStateToProps, {loginThunk, authThunk})(Login)

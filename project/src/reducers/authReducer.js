@@ -1,4 +1,4 @@
-import { login } from '../api/authAPI';
+import { login, auth } from '../api/authAPI';
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -39,5 +39,26 @@ export const loginThunk = (email, password) => {
         );
     }
 }
+
+
+
+export const authThunk = () => {
+    return (dispatch) => {
+        try {
+        auth().then(data =>
+            {
+                if(data.success === true) {
+                    let {id, firstName, lastName, email} = data.user;
+                    dispatch(setAuthUserData(id, firstName, lastName, email));
+                    localStorage.setItem('token', data.token)
+                }
+            }
+        );
+        } catch {
+        localStorage.removeItem('token')
+        }
+    }
+}
+
 
 export default authReducer;

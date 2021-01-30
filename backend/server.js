@@ -2,22 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const passport = require('passport');
 const path = require('path');
 const conDB = require('./conDB');
 
 
 const serv = express();
-
 const port = 3001;
-
 const masters = require('./routes/mastersPage')
 const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
-
-
-serv.use(passport.initialize());
-serv.use(passport.session());
 
 
 serv.use(cors());
@@ -27,21 +20,18 @@ serv.use('/api', services)
 serv.use('/api', auth) 
 
 
-require('./passport')(passport);
-
-
 serv.listen(port, ()=>{
     console.log("connected");
-  });
+});
 
-  mongoose.connect(conDB.barber, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(conDB.barber, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  mongoose.connection.on('connected', () => {
+mongoose.connection.on('connected', () => {
     console.log("sucsses");
-  });
+});
 
-  mongoose.connection.on('error', (err) => {
+mongoose.connection.on('error', (err) => {
     console.log("not sucsses" + err);
-  });
+});
 
   

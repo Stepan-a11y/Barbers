@@ -18,7 +18,7 @@ const App = (props) => {
         <Header />
           <Row>
             <Col>
-              <Route exact path = "/" render ={() => <Login />}/>
+              <Route path = "/" render ={() => <Login />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/masters" render = { () => <MastersContainer /> } />
               <Route path = "/services" render = { () => <ServicesContainer /> } />
