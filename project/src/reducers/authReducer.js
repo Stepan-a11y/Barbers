@@ -2,6 +2,7 @@ import { login, auth } from '../api/authAPI';
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
+
 let initialState = {
     userId: null, 
     firstName: null,
@@ -40,6 +41,25 @@ export const loginThunk = (email, password) => {
     }
 }
 
+export const logout = () => {
+    return (dispatch) => 
+    {
+        try {
+            auth().then(data =>
+                {
+                    if(data.success === true) {
+                        localStorage.removeItem('token');
+                        dispatch(setAuthUserData(null, null, null, null, false));
+                        
+                    }
+                }
+            );
+            } catch (e){
+                console.log(e.response.data);
+            }
+    }
+}
+
 
 
 export const authThunk = () => {
@@ -54,8 +74,8 @@ export const authThunk = () => {
                 }
             }
         );
-        } catch {
-        localStorage.removeItem('token')
+        } catch (e){
+            console.log(e.response.data);
         }
     }
 }

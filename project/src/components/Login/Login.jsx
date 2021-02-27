@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button } from 'react-bootstrap'
-import { loginThunk, authThunk } from '../../reducers/authReducer'
+import { loginThunk, authThunk, } from '../../reducers/authReducer'
 import { connect } from 'react-redux';
 import './Login.css';
 
@@ -33,6 +33,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(FormLogin)
 
 const Login = (props) => {
 
+    debugger;
 
     useEffect( () => {
         props.authThunk();

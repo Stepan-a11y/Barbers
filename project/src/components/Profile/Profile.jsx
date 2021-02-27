@@ -2,18 +2,18 @@ import React from "react";
 import './Profile.css';
 import { Button, Form, Container, Row, Col, Image } from 'react-bootstrap';
 import avatar from "../../local/avatar.png"
+import { NavLink } from 'react-router-dom';
 
 
 let inputTextMaster = React.createRef();
 let inputTextDate = React.createRef();
 
 let Orders = (props) => {
+
     return(
-    
         <Row>
             <Col>
-                <h4>{props.nameMaster}</h4>
-                <p>{props.dateOrder}</p>
+
             </Col>
         </Row>
     )
@@ -21,20 +21,7 @@ let Orders = (props) => {
 
 const Profile = (props) => {
 
-    let orderElem = props.orders.map( o => <Orders nameMaster={o.nameMaster} dateOrder={o.dateOrder} />);
-
-    let informChange = () => {
-        
-        let order = {
-            newNameMaster: inputTextMaster.current.value,
-            newDateOrder: inputTextDate.current.value
-    }
-        props.updateInform(order);
-    }
    
-    let addOrder = () => {  
-        props.addOrder();      
-    }
 
     return(
         <Container className="mt-5 color">
@@ -46,23 +33,9 @@ const Profile = (props) => {
                     <Button variant="light" className="mt-4">Редактировать профиль</Button>
                 </Col>
                 <Col sm={12} md={8} lg={9}>
-                    <Form>
-                        <Form.Group controlId="formGroupEmail">
-                            <Form.Label>Имя мастера</Form.Label>
-                                <Form.Control onChange={ informChange } ref={inputTextMaster} value={props.inform.newNameMaster} type="text"/>
-                        </Form.Group>
-                        <Form.Group controlId="formGroupPassword">
-                            <Form.Label>Дата записи</Form.Label>
-                                <Form.Control onChange={ informChange } ref={inputTextDate} value={props.inform.newDateOrder} type="text" />
-                        </Form.Group>
 
-                        <Button variant="light" onClick = { addOrder } >Записаться</Button>
-                    </Form>
-                    <Row className="mt-4">
-                        <Col>
-                            { orderElem }
-                        </Col>
-                    </Row>
+                        <Button variant="light"><NavLink NavLink to="neworder">Записаться на услугу </NavLink></Button>
+                    
                 </Col>
             </Row>
         </Container>
