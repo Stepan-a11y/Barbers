@@ -2,6 +2,7 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { ordersThunk } from '../../reducers/ordersReducer'
 import './Orders.css';
 
 
@@ -14,21 +15,18 @@ const FormOrders = (props) => {
             <Row className="mt-5">
                 <Col md={6}>
                  <h3><label>Выберите мастера</label></h3>
-                 <Field
-                        name="selectMaster"
-                        component="input"
-                        type="text"
-                       />
+                    <Field name={"masterName"} component={"input"} />
+                         
+                    
                 </Col>
             </Row>
             <Row className="mt-5">
                 <Col md={6}>
                 <h3><label>Выберите услугу</label></h3>
-                    <Field
-                        name="selectService"
-                        component="input"
-                        type="text"
-                       />
+                    <Field name="serviceName" component="input">
+                    
+                    </Field>
+                       
                 </Col>
             </Row>
             <Row className="mt-5">
@@ -53,7 +51,7 @@ const Orders = (props) => {
 
    
     const onSubmit = (formData) => {
-     props.loginThunk(formData.email, formData.password);
+        props.ordersThunk(formData.masterName, formData.serviceName, formData.orderDate,);
     }
 
     return (
@@ -71,4 +69,4 @@ const mapStateToProps = (state) => ({
     
 })
 
-export default connect (mapStateToProps, null )(Orders)
+export default connect (mapStateToProps, {ordersThunk} )(Orders)
