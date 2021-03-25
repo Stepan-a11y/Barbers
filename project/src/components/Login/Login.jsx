@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {Field, reduxForm} from 'redux-form'
-import { Container, Col, Row, Button } from 'react-bootstrap'
+import { Container, Col, Row, Button, Card, InputGroup } from 'react-bootstrap'
 import { loginThunk, authThunk, } from '../../reducers/authReducer'
 import { connect } from 'react-redux';
 import './Login.css';
@@ -11,16 +11,24 @@ const FormLogin = (props) => {
     
     return (
             <form onSubmit={props.handleSubmit}>
-                <Col>
+                <Col  md={{span:6, offset:3}} className="mt-5">
+                    <Card>
+                    <Card.Body>
+                    <h1 className="mb-5">Войдите в аккаунт</h1>
                     <Row className="mb-3">
-                    <Field placeholder={"email"} name={"email"} component={"input"}/>
+                    <InputGroup className="mb-3">
+                        <Field className="inp" placeholder={"email"} name={"email"} component={"input"}/>
+                    </InputGroup>
                     </Row>
                     <Row>
-                        <Field placeholder={"password"} name={"password"} component={"input"}/>
+                        <Field className="inp" placeholder={"password"} name={"password"} component={"input"}/>
                     </Row>
                     <Row className="mt-4">
                         <Button as="input" type="submit" value="Войти" /> 
+                        <Button className="ml-2" as="input" type="submit" value="Регестрация" />
                     </Row>
+                    </Card.Body>
+                    </Card>
                 </Col>
             </form>
     )
@@ -33,7 +41,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(FormLogin)
 
 const Login = (props) => {
 
-    debugger;
+    
 
     useEffect( () => {
         props.authThunk();
@@ -46,9 +54,9 @@ const Login = (props) => {
 
     return (
         <Container>
-            {!props.isAuth && <h1 className="text mt-5">Войдите в аккаунт</h1> }
-            { props.isAuth && <h1 className="text mt-5">{props.firstName} {props.lastName}</h1> }
+            
             <LoginReduxForm onSubmit={onSubmit} />
+            
         </Container>
     )
     

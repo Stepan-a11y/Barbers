@@ -7,3 +7,12 @@
     height: 600px;
     transform: translateY(-20%);
 }
+
+.thirdImg {
+    height: 300px;
+    width: 500px;
+}
+
+body h3{
+    color:black;
+}
