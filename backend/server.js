@@ -11,15 +11,16 @@ const port = 3001;
 const masters = require('./routes/mastersPage')
 const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
-const orders = require('./routes/newOrders')
-
+const newOrders = require('./routes/newOrders')
+const getOrders = require('./routes/getOrders')
 
 serv.use(cors());
 serv.use(bodyParser.json());
 serv.use('/api', masters)
 serv.use('/api', services)
 serv.use('/api', auth) 
-serv.use('/api', orders) 
+serv.use('/api', newOrders) 
+serv.use('/api', getOrders)
 
 
 serv.listen(port, ()=>{

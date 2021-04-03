@@ -1,29 +1,19 @@
-const UPDATE_INFORM = 'UPDATE_INFORM';
-const ADD_ORDER = 'ADD_ORDER';
+import { getOrders } from '../api/ordersAPI';
+
+
+const SET_ORDER = 'SET_ORDER';
 
 
 
 let initialState = { 
-       
+    orders: []
 };
 
 
 const profileReducer = (state = initialState, action) => {
         switch(action.type) {
-            case ADD_ORDER:
-                let newOrder = {
-                    id:3,
-                    nameMaster: state.inform.newNameMaster,
-                    dateOrder: state.inform.newDateOrder
-                }
-                let copyState = {...state};
-                copyState.orders = [...state.orders];
-                copyState.orders.push(newOrder);
-                return copyState;
-            case UPDATE_INFORM:
-                let copyStateIn = {...state};
-                copyStateIn.inform = action.order;
-                return copyStateIn;
+            case SET_ORDER:
+                return {...state, orders: [...state.orders, ...action.orders]}
             default:
                 return state;
         }
@@ -32,9 +22,21 @@ const profileReducer = (state = initialState, action) => {
 
 
 
-export const updateInformAC = (order) => ({type:UPDATE_INFORM, order:order})
-export const addOrderAC = () => ({type:ADD_ORDER })
+export const setOrders = (orders) => ({type:SET_ORDER, orders})
 
+
+
+export const getOrdersThunk = () => {
+    debugger;
+    return (dispatch) => {
+    getOrders().then(data => 
+        { 
+            dispatch(setOrders(data));
+        }
+    );
+    }
+    debugger;
+}
 
 
 export default profileReducer;

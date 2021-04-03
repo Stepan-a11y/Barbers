@@ -8,6 +8,7 @@ import ServicesContainer from './components/Services/ServicesContainer';
 import Main from './components/Main/Main'
 import Login from './components/Login/Login';
 import Orders from './components/Order/Orders';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -27,6 +28,7 @@ const App = (props) => {
               <Route path = "/services" render = { () => <ServicesContainer /> } />
             </Col>
           </Row>
+          <Footer />
       </Container>
   );
 

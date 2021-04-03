@@ -43,7 +43,8 @@ class Main extends React.Component {
                                     </Col>
                                 </Card.ImgOverlay>
                     </Card>
-                </Row>       
+                </Row>  
+
             </Container>
 
         )

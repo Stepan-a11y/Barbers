@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {updateInformAC, addOrderAC} from '../../reducers/profileReducer';
+import {getOrdersThunk, setOrders} from '../../reducers/profileReducer';
+import { authThunk } from '../../reducers/authReducer';
 import Profile from './Profile';
+
+
+
+const ProfileContainer = (props) => {
+
+    useEffect(() => {
+        props.getOrdersThunk()
+        props.authThunk()
+    }, [])
+
+    debugger;
+
+    let orderEmail = props.profileOrders.email
+
+    return(
+        <Profile orderEmail={orderEmail} emailAuth={props.emailAuth} />
+    )
+    debugger;
+}
 
 
 
 
 let mapStateToProps = (state) => {
     return {
-        orders: state.profile.orders,
-        inform: state.profile.inform
-    }
-}
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateInform: (order) => {
-            dispatch(updateInformAC(order));
-        },
-        addOrder: () => {
-            dispatch(addOrderAC());
-        }
+        profileOrders: state.profile.orders,
+        emailAuth: state.auth.email
     }
 }
 
 
 
 
-let ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, {getOrdersThunk, setOrders, authThunk})(ProfileContainer);
 
 
-export default ProfileContainer;

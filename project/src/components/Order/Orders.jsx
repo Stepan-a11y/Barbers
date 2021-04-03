@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button, Card } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { ordersThunk, getServicesOrdersThunk, setServicesToOrder, getMastersOrdersThunk, setMastersToOrder } from '../../reducers/ordersReducer'
+import { authThunk } from '../../reducers/authReducer'
 import './Orders.css';
 import { useEffect } from 'react';
 
@@ -68,6 +69,7 @@ const Orders = (props) => {
     useEffect( () => {
         props.getServicesOrdersThunk();
         props.getMastersOrdersThunk();
+        props.authThunk();
     }, [])
 
    
@@ -78,7 +80,7 @@ debugger;
 
 
     const onSubmit = (formData) => {
-        props.ordersThunk(formData.masterName, formData.serviceName, formData.orderDate);
+        props.ordersThunk(props.email, formData.masterName, formData.serviceName, formData.orderDate);
     }
     debugger;
    
@@ -97,8 +99,10 @@ debugger;
 const mapStateToProps = (state) => {
     return {
         mastersOrder: state.orders.mastersOrder,
-        servicesOrder: state.orders.servicesOrder
+        servicesOrder: state.orders.servicesOrder,
+        email: state.auth.email
     }
 }
 
-export default connect (mapStateToProps, {ordersThunk, getServicesOrdersThunk, setServicesToOrder, getMastersOrdersThunk, setMastersToOrder} )(Orders)
+export default connect (mapStateToProps, {ordersThunk, getServicesOrdersThunk, 
+    setServicesToOrder, getMastersOrdersThunk, setMastersToOrder, authThunk} )(Orders)

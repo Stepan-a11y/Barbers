@@ -8,6 +8,7 @@ const SET_MASTERS_TO_ORDER = 'SET_MASTERS_TO_ORDER';
 
 let initialState = {
     orderId: null, 
+    email: null,
     masterName: null,
     serviceName: null,
     orderDate: null,
@@ -38,8 +39,8 @@ const ordersReducer = (state = initialState, action) => {
         }
 } 
 
-export const setOrderData = (orderId, masterName, serviceName, orderDate) => ({
-    type: SET_ORDER_DATA, payload: {orderId, masterName, serviceName, orderDate}
+export const setOrderData = (orderId, email, masterName, serviceName, orderDate) => ({
+    type: SET_ORDER_DATA, payload: {orderId, email, masterName, serviceName, orderDate}
 })
 
 
@@ -48,12 +49,12 @@ export const setServicesToOrder = (servicesOrder) => ({type:SET_SERVICES_TO_ORDE
 export const setMastersToOrder = (mastersOrder) => ({type:SET_MASTERS_TO_ORDER, mastersOrder})
 
 
-export const ordersThunk = (masterName, serviceName, orderDate) => {
+export const ordersThunk = (email, masterName, serviceName, orderDate) => {
     return(dispatch) => {
-        newOrder(masterName, serviceName, orderDate).then(data =>
+        newOrder(email, masterName, serviceName, orderDate).then(data =>
             {
                 if(data.success === true){
-                    dispatch(setOrderData(masterName, serviceName, orderDate));
+                    dispatch(setOrderData(email, masterName, serviceName, orderDate));
                 }
             }
         );

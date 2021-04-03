@@ -3,6 +3,23 @@
 }
 
 .ava {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
+}
+
+.navLink a:link{
+    font-size: medium;
+    text-decoration: none;
+}
+
+
+
+.navLink a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.navLink a:visited{
+    color: white;
+    text-decoration: none;
 }
