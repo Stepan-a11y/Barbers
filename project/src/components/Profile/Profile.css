@@ -3,9 +3,29 @@
 }
 
 .ava {
+    margin-top: 30px;
     height: 250px;
     width: 250px;
 }
+
+
+@media(max-width: 1152px) {
+    .ava {
+        margin-top: 30px;
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media(max-width: 990px) {
+    .ava {
+        margin-top: 30px;
+        height: 150px;
+        width: 150px;
+    }
+}
+
+
 
 .navLink a:link{
     font-size: medium;
@@ -22,4 +42,19 @@
 .navLink a:visited{
     color: white;
     text-decoration: none;
+}
+
+.orders{
+    background-color: white;
+    border-radius: 8px;
+}
+
+.orderCont {
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+
+.btnOrder{
+    margin-top: 40px;
 }

@@ -20,6 +20,7 @@ const mastersReducer = (state = initialState, action) => {
 export const setMasters = (masters) => ({type:SET_MASTERS, masters})
 
 export const getMastersThunk = () => {
+    
     return (dispatch) => {
     getMasters().then(data => 
         { 

@@ -16,15 +16,15 @@ import Footer from './components/Footer/Footer';
 const App = (props) => {
 
   return (
-      <Container>
+      <Container >
         <HeaderContainer />
-          <Row>
-            <Col>
+          <Row >
+            <Col className="grid">
               <Route path = "/login" render ={() => <Login />}/>
               <Route exact path = "/" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/neworder" render = { () => <Orders /> } />
-              <Route path = "/masters" render = { () => <MastersContainer /> } />
+              <Route path = "/masters" render = { () => <MastersContainer className="masters"/> } />
               <Route path = "/services" render = { () => <ServicesContainer /> } />
             </Col>
           </Row>

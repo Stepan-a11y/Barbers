@@ -6,33 +6,14 @@ import { NavLink } from 'react-router-dom';
 
 
 
-let Orders = (props) => {
 
-    if (props.orderEmail === props.emailAuth){
-        debugger;
-    return(
-        <Row>
-            <Col>
 
-            </Col>
-        </Row>
-    )
-    }
-    else {
-        return(
-            <Row>
-                <Col>
-    
-                </Col>
-            </Row>
-        )
-    }
-    
-}
+
+
 
 const Profile = (props) => {
 
-   
+    
 
     return(
         <Container className="mt-5 mb-5">
@@ -41,8 +22,8 @@ const Profile = (props) => {
                 <Card>
                 
                     <Image src={avatar} className="ml-4 ava"/>
-                    <h2 className="ml-5 mt-4">Firstname</h2>
-                    <h2 className="ml-5 mt-2">Lastname</h2>
+                    {props.isAuth && <h2 className="ml-5 mt-4">{props.firstName}</h2>}
+                    {props.isAuth && <h2 className="ml-5 mt-2">{props.lastName}</h2>}
                     <Button variant="dark" className="mt-4">Редактировать профиль</Button>
                 
                 </Card>
@@ -52,8 +33,30 @@ const Profile = (props) => {
 
                         <Button variant="dark" className="navLink"><NavLink NavLink to="neworder" >Записаться на услугу </NavLink></Button>
                     
-                        <Orders />
+                        
                 </Card>
+
+                
+                    { 
+                        props.orders.map(m => <Col md={12} className="mt-4 mb-3 block orders" key={m.id}>
+                             {
+                                 
+                                (props.emailAuth === m.email) && <Col md={12} className="orderCont">
+                                
+                                 <p>Имя мастера: {m.masterName}</p> 
+                                 <p>Наименование и цена услуги: {m.serviceName}</p> 
+                                 <p>Дата проведения услуги: {m.date}</p> 
+                                
+                                 <Button  variant="dark" className="btnOrder" block>Отменить запись</Button>
+
+                                 </Col>
+                             }
+                           
+                        </Col>)
+  
+                    }
+                
+
                 </Col>
             </Row>
         </Container>

@@ -1,3 +1,29 @@
 .inp{
-    border-radius: 5px ;
+    padding-left: 20px;
+    height: 40px;
+    width: 280px;
+    border-radius: 15px ;
+    border: 1px solid rgb(59, 58, 58);
+    box-shadow: 0 0 3px 0.5px gray;
+    
 }
+
+
+
+
+
+.back1{
+    background-color: rgb(51, 49, 49);
+    
+}
+
+.back{
+    background-color: white;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+}
+
+h1{
+    text-align: center;
+}
+

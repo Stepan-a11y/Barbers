@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
       if(err) throw err;
       if(isMatch){
           const token = jwt.sign({id: user.id}, conDB.secret, {
-            expiresIn: 120
+            expiresIn: 3600
           });
 
          return res.json({
@@ -65,7 +65,7 @@ router.get('/auth', middleware,
         try {
           const user = await User.findOne({_id: req.user.id})
           const token = jwt.sign({id: user.id}, conDB.secret, {
-            expiresIn: 120
+            expiresIn: 3600
           });
           return res.json({
             success: true,

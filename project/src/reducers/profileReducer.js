@@ -1,9 +1,7 @@
 import { getOrders } from '../api/ordersAPI';
 
 
-const SET_ORDER = 'SET_ORDER';
-
-
+const SET_ORDERS = 'SET_ORDERS';
 
 let initialState = { 
     orders: []
@@ -11,23 +9,19 @@ let initialState = {
 
 
 const profileReducer = (state = initialState, action) => {
-        switch(action.type) {
-            case SET_ORDER:
-                return {...state, orders: [...state.orders, ...action.orders]}
-            default:
-                return state;
-        }
+    switch(action.type) {
+        case SET_ORDERS:
+           return {...state, orders: [...state.orders, ...action.orders]}
+        default:
+            return state;
+    }
 
 }
 
-
-
-export const setOrders = (orders) => ({type:SET_ORDER, orders})
-
-
+export const setOrders = (orders) => ({type:SET_ORDERS, orders})
 
 export const getOrdersThunk = () => {
-    debugger;
+    
     return (dispatch) => {
     getOrders().then(data => 
         { 
@@ -35,7 +29,6 @@ export const getOrdersThunk = () => {
         }
     );
     }
-    debugger;
 }
 
 
