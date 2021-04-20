@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './Login.css';
 import { Email, Password } from '../forms/forms';
-import { SubmissionError } from 'redux-form'
 
 
 
@@ -58,8 +57,7 @@ const Login = (props) => {
 
    
     
-    const onSubmit = (formData, props) => {
-        
+    const onSubmit = (formData) => {  
      props.loginThunk(formData.email, formData.password);
     }
     
@@ -67,7 +65,7 @@ const Login = (props) => {
     return (
         <Container>
             
-            <LoginReduxForm onSubmit={onSubmit} email={props.email} />
+            <LoginReduxForm onSubmit={onSubmit} />
             
         </Container>
     )
@@ -78,7 +76,6 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     firstName: state.auth.firstName,
     lastName: state.auth.lastName,
-    email: state.auth.email
 })
 
 export default connect (mapStateToProps, {loginThunk, authThunk})(Login)
