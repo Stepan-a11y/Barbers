@@ -10,6 +10,10 @@ class MastersContainer extends React.Component{
         this.props.getMastersThunk();
     }
 
+    componentWillUnmount(){
+        window.location.reload();
+    }
+
     render(){
         return(
             <Masters masters={this.props.masters} />

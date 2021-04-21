@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button, Card, InputGroup } from 'react-bootstrap'
 import { loginThunk, authThunk, } from '../../reducers/authReducer'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import './Login.css';
 import { Email, Password } from '../forms/forms';
 
@@ -32,8 +32,8 @@ const FormLogin = (props) => {
 
                         <Row>
                             <Col md={{span:8, offset:2}}>
-                        <Button block className="mb-2 sign" as="input" type="submit" value="Войти" /> 
-                        <Button block className="mb-4" as="input" type="submit" value="Регистрация" />
+                        <Button block variant="dark" className="mb-2 sign" as="input" type="submit" value="Войти" /> 
+                        <Button block variant="dark" className="navLink mb-4"><NavLink NavLink to="registration" >Регистрация</NavLink></Button>
                         </Col>
                         </Row>
                     </Col>

@@ -7,10 +7,7 @@ import { connect } from 'react-redux';
 
 class HeaderContainer extends React.Component {
 
-    componentDidUpdate() {
-        
-        console.log("componentDidUpdate")
-    }
+   
 
     render() {
         

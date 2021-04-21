@@ -12,6 +12,9 @@ const ProfileContainer = (props) => {
     useEffect(() => {
         props.authThunk();
         props.getOrdersThunk();
+        return () => {
+            window.window.location.reload()
+          }
     }, [])
 
    

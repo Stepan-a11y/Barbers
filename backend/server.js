@@ -13,6 +13,7 @@ const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
 const newOrders = require('./routes/newOrders')
 const getOrders = require('./routes/getOrders')
+const registration = require('./routes/auth')
 
 serv.use(cors());
 serv.use(bodyParser.json());
@@ -21,6 +22,7 @@ serv.use('/api', services)
 serv.use('/api', auth) 
 serv.use('/api', newOrders) 
 serv.use('/api', getOrders)
+serv.use('/api', registration)
 
 
 serv.listen(port, ()=>{

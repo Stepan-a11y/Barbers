@@ -9,6 +9,7 @@ import Main from './components/Main/Main'
 import Login from './components/Login/Login';
 import Orders from './components/Order/Orders';
 import Footer from './components/Footer/Footer';
+import Registration from './components/Registration/Registration';
 
 
 
@@ -21,6 +22,7 @@ const App = (props) => {
           <Row >
             <Col className="grid">
               <Route path = "/login" render ={() => <Login />}/>
+              <Route path = "/registration" render ={() => <Registration />}/>
               <Route exact path = "/" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/neworder" render = { () => <Orders /> } />

@@ -11,6 +11,10 @@ class ServicesContainer extends React.Component {
             this.props.getServicesThunk();
         }
 
+        componentWillUnmount(){
+            window.location.reload();
+        }
+
         render() {
             return <Services services={this.props.services} />
         }

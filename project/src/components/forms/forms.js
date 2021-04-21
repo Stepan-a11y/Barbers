@@ -22,3 +22,14 @@ export const Password = (props) => {
         </Form>
     )
 }
+
+
+export const Input = (props) => {
+    return (
+        <Form >
+             <Form.Group controlId="formBasicInput">
+                <Form.Control className="input" type="Input" {...props.input} />
+            </Form.Group>
+        </Form>
+    )
+}
