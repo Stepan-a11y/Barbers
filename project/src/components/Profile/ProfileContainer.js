@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {getOrdersThunk, setOrders} from '../../reducers/profileReducer';
+import {getOrdersThunk, setOrders, deleteOrdersThunk} from '../../reducers/profileReducer';
 import { authThunk } from '../../reducers/authReducer';
 import Profile from './Profile';
 import { Redirect } from 'react-router-dom';
@@ -9,12 +9,13 @@ import { Redirect } from 'react-router-dom';
 
 const ProfileContainer = (props) => {
 
-    useEffect(() => {
+    useEffect((orderId) => {
         props.authThunk();
         props.getOrdersThunk();
+        props.deleteOrdersThunk(orderId);
         return () => {
             window.window.location.reload()
-          }
+        }
     }, [])
 
    
@@ -24,7 +25,7 @@ const ProfileContainer = (props) => {
 
     return(
 
-        <Profile  isAuth={props.isAuth} firstName={props.firstName} lastName={props.lastName} emailAuth={props.emailAuth} orders={props.orders}/>
+        <Profile  isAuth={props.isAuth} firstName={props.firstName} lastName={props.lastName} emailAuth={props.emailAuth} orders={props.orders} deleteOrdersThunk={props.deleteOrdersThunk}/>
     )
     
 }
@@ -45,6 +46,6 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {authThunk, getOrdersThunk, setOrders})(ProfileContainer);
+export default connect(mapStateToProps, {authThunk, getOrdersThunk, setOrders, deleteOrdersThunk})(ProfileContainer);
 
 

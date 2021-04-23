@@ -38,7 +38,7 @@ const Profile = (props) => {
 
                 
                     { 
-                        props.orders.map(m => <Col md={12} className="mt-4 mb-3 block orders" key={m.id}>
+                        props.orders.map(m => <Col md={12} className="mt-4 mb-3 block orders" key={m._id}>
                              {
                                  
                                 (props.emailAuth === m.email) && <Col md={12} className="orderCont">
@@ -46,8 +46,8 @@ const Profile = (props) => {
                                  <p>Имя мастера: {m.masterName}</p> 
                                  <p>Наименование и цена услуги: {m.serviceName}</p> 
                                  <p>Дата проведения услуги: {m.date}</p> 
-                                
-                                 <Button  variant="dark" className="btnOrder" block>Отменить запись</Button>
+                            
+                                 <Button  variant="dark" className="btnOrder" onClick={() => {props.deleteOrdersThunk(m._id)}} block>Отменить запись</Button>
 
                                  </Col>
                              }

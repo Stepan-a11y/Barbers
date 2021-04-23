@@ -8,3 +8,8 @@ export const newOrder = (email, masterName, serviceName, orderDate) => {
 export const getOrders = () => {
     return baseRout.get("getorders").then(response => {return response.data})
 }
+
+
+export const delOrders = (orderId) => {
+    return baseRout.delete(`delorders/${orderId}`).then(response => {return response.data})
+}

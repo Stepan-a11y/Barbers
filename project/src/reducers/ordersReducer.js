@@ -6,6 +6,7 @@ const SET_ORDER_DATA = 'SET_ORDER_DATA';
 const SET_SERVICES_TO_ORDER = 'SET_SERVICES_TO_ORDER';
 const SET_MASTERS_TO_ORDER = 'SET_MASTERS_TO_ORDER';
 
+
 let initialState = {
     orderId: null, 
     email: null,
@@ -49,6 +50,10 @@ export const setServicesToOrder = (servicesOrder) => ({type:SET_SERVICES_TO_ORDE
 export const setMastersToOrder = (mastersOrder) => ({type:SET_MASTERS_TO_ORDER, mastersOrder})
 
 
+
+
+
+
 export const ordersThunk = (email, masterName, serviceName, orderDate) => {
     return(dispatch) => {
         newOrder(email, masterName, serviceName, orderDate).then(data =>
@@ -80,5 +85,11 @@ export const getMastersOrdersThunk = () => {
         );
         }
 }
+
+
+
+
+
+
 
 export default ordersReducer;
