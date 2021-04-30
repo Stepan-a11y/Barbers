@@ -12,7 +12,7 @@ class Masters extends React.Component {
         <Container className="mt-5">  
         <Row>
             { 
-            this.props.masters.map(m => <Col md={4} className="mb-3 block" key={m.id}>
+            this.props.masters.map(m => <Col md={4} className="mb-3 block" key={m._id}>
                 <Card>
                     <Card.Body>
                         <Card.Title className="mr-2">

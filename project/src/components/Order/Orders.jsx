@@ -4,7 +4,7 @@ import { Container, Col, Row, Button, Card } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { ordersThunk, getServicesOrdersThunk, setServicesToOrder, getMastersOrdersThunk, setMastersToOrder } from '../../reducers/ordersReducer'
 import { authThunk } from '../../reducers/authReducer'
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import './Orders.css';
 import { useEffect } from 'react';
 
@@ -12,6 +12,11 @@ import { useEffect } from 'react';
 
 
 const FormOrders = (props) => {
+
+    function confirm () {
+        alert("Ваша запись добавлена! Перейдите в профиль для просмотра.")
+        
+    }
 
     return (
         <form onSubmit={props.handleSubmit}>
@@ -21,9 +26,8 @@ const FormOrders = (props) => {
                                 <h3><label>Выберите мастера:</label></h3>
                                 <Field className="opt" name={"masterName"} component={"select"}>
                                     <option >Выберите мастера</option>
-                                    { props.mast.map(m => <option key={m.id} >
-                                    {m.firstName}
-                                    {m.lastName}
+                                    { props.mast.map(m => <option key={m._id} >
+                                    {m.firstName} {m.lastName}
                                     </option> )}
                                 </Field>   
                     </Col>
@@ -32,9 +36,8 @@ const FormOrders = (props) => {
                                 <h3><label>Выберите услугу:</label></h3>
                                 <Field className="opt" name="serviceName" component={"select"}>
                                     <option >Выберите услугу</option>
-                                    { props.serv.map(m => <option key={m.id} >
-                                    {m.name}
-                                    {m.price}
+                                    { props.serv.map(m => <option key={m._id} >
+                                    {m.name} {m.price}
                                     </option> )}
                                 </Field>
                     </Col>
@@ -45,7 +48,9 @@ const FormOrders = (props) => {
                     </Col>
 
                     <Col className="mt-5 mb-3" md={{span:10, offset:1}}> 
-                                <Button variant="dark" as="input" type="submit" value="Записаться" /> 
+                            
+                               <Button variant="dark" as="input" type="submit" onClick={ confirm } value="Записаться"/>
+                            
                     </Col>
             </Row>
         </form>
@@ -69,16 +74,17 @@ const Orders = (props) => {
     const serv = props.servicesOrder;
     const mast = props.mastersOrder;
 
+    
+
     const onSubmit = (formData) => {
         props.ordersThunk(props.email, formData.masterName, formData.serviceName, formData.orderDate);
+        
     }
     
    
     return (
-        <Container>  
-            
-                <OrdersReduxForm serv={serv} mast={mast} onSubmit={onSubmit} />
-        
+        <Container>            
+                <OrdersReduxForm  serv={serv} mast={mast} onSubmit={onSubmit} />
         </Container>
         
     )
@@ -95,3 +101,4 @@ const mapStateToProps = (state) => {
 
 export default connect (mapStateToProps, {ordersThunk, getServicesOrdersThunk, 
     setServicesToOrder, getMastersOrdersThunk, setMastersToOrder, authThunk} )(Orders)
+    

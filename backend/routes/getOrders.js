@@ -16,10 +16,11 @@ router.get('/getorders', (req, res) => {
   router.delete('/delorders/:id', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
-        Orders.findByIdAndRemove(req.params.id, function(err,data)
+        Orders.findByIdAndRemove(req.params.id, function(err,orders)
         {
             if(err) return console.log(err); 
         });
+
   });
   
   

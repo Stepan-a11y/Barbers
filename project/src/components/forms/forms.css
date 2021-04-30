@@ -3,3 +3,11 @@
     border-radius: 15px ;
     border-color: black;
 }
+
+.error {
+    background-color: rgb(236, 91, 91);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+}

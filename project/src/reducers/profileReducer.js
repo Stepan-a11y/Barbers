@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                  ...state,
                  orders: state.orders.map( o => {
-                     if(o.id === action.orderId) {
+                     if(o._id === action.orderId) {
                          return {...o}
                      }
                     }

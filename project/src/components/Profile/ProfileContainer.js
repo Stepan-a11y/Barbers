@@ -9,10 +9,9 @@ import { Redirect } from 'react-router-dom';
 
 const ProfileContainer = (props) => {
 
-    useEffect((orderId) => {
+    useEffect(() => {
         props.authThunk();
         props.getOrdersThunk();
-        props.deleteOrdersThunk(orderId);
         return () => {
             window.window.location.reload()
         }

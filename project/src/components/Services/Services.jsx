@@ -9,7 +9,7 @@ class Services extends React.Component {
         return(
         <Container className="mt-5">  
             { 
-            this.props.services.map(m => <Row key={m.id} className="block">
+            this.props.services.map(m => <Row key={m._id} className="block">
                 <Col className="mb-3">
                 <Card>
                     <Card.Body>

@@ -47,7 +47,7 @@ const Profile = (props) => {
                                  <p>Наименование и цена услуги: {m.serviceName}</p> 
                                  <p>Дата проведения услуги: {m.date}</p> 
                             
-                                 <Button  variant="dark" className="btnOrder" onClick={() => {props.deleteOrdersThunk(m._id)}} block>Отменить запись</Button>
+                                 <Button  variant="dark" className="btnOrder" onClick={() => {window.window.location.reload(); props.deleteOrdersThunk(m._id)}} block>Отменить запись</Button>
 
                                  </Col>
                              }
