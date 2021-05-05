@@ -1,7 +1,7 @@
 import baseRout from "./baseRout"
 
-export const newOrder = (email, masterName, serviceName, orderDate) => {
-    return baseRout.post("neworder", {email, masterName, serviceName, orderDate}).then(response => {return response.data})
+export const newOrder = (email, masterName, serviceName, orderDate, orderTime) => {
+    return baseRout.post("neworder", {email, masterName, serviceName, orderDate, orderTime}).then(response => {return response.data})
     
 }
 

@@ -18,7 +18,6 @@ const FormLogin = (props) => {
         if (!props.validUser.includes(values.email)) {
             throw new SubmissionError({
               email: 'Такого пользователя нет',
-              _error: 'Неверный пароль'
             })
     } else { 
         props.handleSubmit()
@@ -36,7 +35,9 @@ const FormLogin = (props) => {
                     
                             <Field className="inp ml-5" placeholder={"email"} name={"email"} component={Email} validate={[required, email]}/>
     
-                            <Field className="inp ml-5" placeholder={"password"} name={"password"} component={Password} validate={[required]}/>
+                            <Field className="inp ml-5" placeholder={"password"} name={"password"} component={Password} passErr={props.passErr} validate={[required]}/>
+
+                            
                            
                         </Col>
                         </Row>
@@ -85,7 +86,7 @@ const Login = (props) => {
     return (
         <Container>
             
-            <LoginReduxForm validUser={validUser} onSubmit={onSubmit} />
+            <LoginReduxForm passErr={props.passErr} validUser={validUser} onSubmit={onSubmit} />
             
         </Container>
     )
@@ -96,7 +97,8 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     firstName: state.auth.firstName,
     lastName: state.auth.lastName,
-    users: state.usersValid.users
+    users: state.usersValid.users,
+    passErr: state.auth.msgError
 })
 
 export default connect (mapStateToProps, {loginThunk, authThunk, setUsers, getUsersThunk})(Login)

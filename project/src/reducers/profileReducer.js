@@ -5,7 +5,8 @@ const SET_ORDERS = 'SET_ORDERS';
 const DEL_ORDERS = 'DEL_ORDERS';
 
 let initialState = { 
-    orders: []
+    orders: [],
+    del: false
 };
 
 
@@ -24,7 +25,8 @@ const profileReducer = (state = initialState, action) => {
                          return {...o}
                      }
                     }
-                 )
+                 ),
+                 del: true
                  
             }
         default:
@@ -35,14 +37,16 @@ const profileReducer = (state = initialState, action) => {
 
 export const setOrders = (orders) => ({type:SET_ORDERS, orders})
 
-export const deleteOrders = (orderId) => ({type:DEL_ORDERS, orderId})
+export const deleteOrders = (orderId, del) => ({type:DEL_ORDERS, orderId, del: del})
 
 
 export const deleteOrdersThunk = (orderId) => {
     return (dispatch) => {
         delOrders(orderId).then(data => 
             { 
+                if(data.success === true){
                 dispatch(deleteOrders(orderId));
+                }
             }
         );
         }

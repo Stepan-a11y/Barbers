@@ -1,10 +1,11 @@
-import { newOrder } from '../api/ordersAPI';
+import { newOrder, getOrders } from '../api/ordersAPI';
 import { getServices } from '../api/servicesAPI';
 import { getMasters } from '../api/mastersAPI';
 
 const SET_ORDER_DATA = 'SET_ORDER_DATA';
 const SET_SERVICES_TO_ORDER = 'SET_SERVICES_TO_ORDER';
 const SET_MASTERS_TO_ORDER = 'SET_MASTERS_TO_ORDER';
+const SET_ORDERS_FOR_SUBMIT = 'SET_ORDERS_FOR_SUBMIT';
 
 
 let initialState = {
@@ -13,8 +14,10 @@ let initialState = {
     masterName: null,
     serviceName: null,
     orderDate: null,
+    orderTime: null,
     servicesOrder: [],
-    mastersOrder:[]   
+    mastersOrder:[],
+    ordersSubmit: []   
 };
 
 
@@ -35,13 +38,18 @@ const ordersReducer = (state = initialState, action) => {
                  ...state, 
                  mastersOrder: [...state.mastersOrder, ...action.mastersOrder]
             }
+        case SET_ORDERS_FOR_SUBMIT:
+           return {
+               ...state, 
+               ordersSubmit: [...state.ordersSubmit, ...action.ordersSubmit]
+            }
         default:
             return state;
         }
 } 
 
-export const setOrderData = (orderId, email, masterName, serviceName, orderDate) => ({
-    type: SET_ORDER_DATA, payload: {orderId, email, masterName, serviceName, orderDate}
+export const setOrderData = (orderId, email, masterName, serviceName, orderDate, orderTime) => ({
+    type: SET_ORDER_DATA, payload: {orderId, email, masterName, serviceName, orderDate, orderTime}
 })
 
 
@@ -49,17 +57,17 @@ export const setServicesToOrder = (servicesOrder) => ({type:SET_SERVICES_TO_ORDE
 
 export const setMastersToOrder = (mastersOrder) => ({type:SET_MASTERS_TO_ORDER, mastersOrder})
 
+export const setOrdersSubmit = (ordersSubmit) => ({type:SET_ORDERS_FOR_SUBMIT, ordersSubmit})
 
 
 
 
-
-export const ordersThunk = (email, masterName, serviceName, orderDate) => {
+export const ordersThunk = (email, masterName, serviceName, orderDate, orderTime) => {
     return(dispatch) => {
-        newOrder(email, masterName, serviceName, orderDate).then(data =>
+        newOrder(email, masterName, serviceName, orderDate, orderTime).then(data =>
             {
                 if(data.success === true){
-                    dispatch(setOrderData(email, masterName, serviceName, orderDate));
+                    dispatch(setOrderData(email, masterName, serviceName, orderDate, orderTime));
                 }
             }
         );
@@ -86,6 +94,16 @@ export const getMastersOrdersThunk = () => {
         }
 }
 
+export const getOrdersThunkSubmit = () => {
+    
+    return (dispatch) => {
+    getOrders().then(data => 
+        { 
+            dispatch(setOrdersSubmit(data));
+        }
+    );
+    }
+}
 
 
 

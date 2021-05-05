@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Orders from './components/Order/Orders';
 import Footer from './components/Footer/Footer';
 import Registration from './components/Registration/Registration';
+import RedactProfile from './components/RedactProfile/RedactProfile';
 
 
 
@@ -26,6 +27,7 @@ const App = (props) => {
               <Route exact path = "/" render ={() => <Main />}/>
               <Route path = "/profile" render = { () => <ProfileContainer /> } />
               <Route path = "/neworder" render = { () => <Orders /> } />
+              <Route path = "/upduser" render = { () => <RedactProfile /> } />
               <Route path = "/masters" render = { () => <MastersContainer className="masters"/> } />
               <Route path = "/services" render = { () => <ServicesContainer /> } />
             </Col>

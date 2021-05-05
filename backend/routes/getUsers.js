@@ -13,4 +13,27 @@ router.get('/getusers', (req, res) => {
   });
 
 
+router.put('/upduser', (req, res) => {
+    let userId = req.body.userId;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+
+      User.updateOne(
+          { _id: userId},
+          { $set: { firstName: firstName, lastName: lastName} },
+          function(err){
+            if(err) 
+            res.json({success: false, msg: "not upd"});
+          else
+            res.json({success: true, msg: "upd successful"});
+          }
+      )
+});
+
+
+
+
+
   module.exports = router;
+
+

@@ -16,6 +16,7 @@ const getOrders = require('./routes/getOrders')
 const delorders = require('./routes/getOrders')
 const registration = require('./routes/auth')
 const getUsers = require('./routes/getUsers')
+const updUsers = require('./routes/getUsers')
 
 serv.use(cors());
 serv.use(bodyParser.json());
@@ -27,6 +28,7 @@ serv.use('/api', getOrders)
 serv.use('/api', delorders)
 serv.use('/api', registration)
 serv.use('/api', getUsers)
+serv.use('/api', updUsers)
 
 
 serv.listen(port, ()=>{

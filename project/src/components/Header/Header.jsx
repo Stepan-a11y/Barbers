@@ -14,22 +14,13 @@ const Header = (props) => {
             <Navbar.Brand className="navBrand ml-5"><NavLink className="ml-5" NavLink to="/" >BarberBAR</NavLink></Navbar.Brand>
             <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                { !props.isAuth &&
                     <Nav>
                         <Nav.Link className="navLink mr-5"><NavLink  NavLink to="masters" className="mr-5">Мастера</NavLink></Nav.Link>
                         <Nav.Link className="navLink mr-5"><NavLink  NavLink to="services" className="mr-5" >Услуги</NavLink></Nav.Link>
-                        <Nav.Link className="navLink mr-5"><NavLink  NavLink to="login" className="mr-5">Войти</NavLink></Nav.Link>
-                    
+                        { props.isAuth && <Nav.Link className="navLink mr-5"><NavLink  NavLink to="profile" className="mr-5">Профиль</NavLink></Nav.Link>}
+                        { !props.isAuth && <Nav.Link className="navLink mr-5"><NavLink  NavLink to="login" className="mr-5" >Войти</NavLink></Nav.Link>}
+                        { props.isAuth && <Button variant="outline-light" type="submit" onClick = { props.logout } >Выйти</Button> }
                     </Nav>
-                }
-                { props.isAuth &&
-                    <Nav>
-                        <Nav.Link className="navLink mr-5"><NavLink  NavLink to="masters" className="mr-5">Мастера</NavLink></Nav.Link>
-                        <Nav.Link className="navLink mr-5"><NavLink  NavLink to="services" className="mr-5" >Услуги</NavLink></Nav.Link>
-                        <Nav.Link className="navLink mr-5"><NavLink  NavLink to="profile" className="mr-5">Профиль</NavLink></Nav.Link>
-                        <Button variant="outline-light" type="submit" onClick = { props.logout } >Выйти</Button> 
-                    </Nav>
-                }
                 </Navbar.Collapse>
         </Navbar>
 

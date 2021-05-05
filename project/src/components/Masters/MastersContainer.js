@@ -16,7 +16,7 @@ class MastersContainer extends React.Component{
 
     render(){
         return(
-            <Masters masters={this.props.masters} />
+            <Masters isAuth={this.props.isAuth} masters={this.props.masters} />
         )
     }
 }

@@ -7,6 +7,7 @@ import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
 import ordersReducer from './reducers/ordersReducer';
 import validReducer from './reducers/validReducer'
+import registrationReducer from './reducers/registrationReducer';
 
 let reducers = combineReducers({ 
       profile: profileReducer, 
@@ -15,6 +16,7 @@ let reducers = combineReducers({
       auth: authReducer,
       orders: ordersReducer,
       usersValid: validReducer,
+      registration: registrationReducer,
       form: formReducer
     });
 

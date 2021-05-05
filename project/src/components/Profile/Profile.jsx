@@ -24,7 +24,7 @@ const Profile = (props) => {
                     <Image src={avatar} className="ml-4 ava"/>
                     {props.isAuth && <h2 className="ml-5 mt-4">{props.firstName}</h2>}
                     {props.isAuth && <h2 className="ml-5 mt-2">{props.lastName}</h2>}
-                    <Button variant="dark" className="mt-4">Редактировать профиль</Button>
+                    <Button variant="dark" className="mt-4 navLink"><NavLink NavLink to="upduser" >Редактировать профиль</NavLink></Button>
                 
                 </Card>
                 </Col>
@@ -42,12 +42,12 @@ const Profile = (props) => {
                              {
                                  
                                 (props.emailAuth === m.email) && <Col md={12} className="orderCont">
-                                
-                                 <p>Имя мастера: {m.masterName}</p> 
-                                 <p>Наименование и цена услуги: {m.serviceName}</p> 
-                                 <p>Дата проведения услуги: {m.date}</p> 
+                                 <p> <span className="orderText">Имя мастера:</span> <span>{m.masterName}</span></p>
+                                 <p> <span className="orderText">Наименование и цена услуги:</span> <span>{m.serviceName}</span></p>
+                                 <p> <span className="orderText">Дата проведения услуги:</span> <span>{m.date}</span></p>
+                                 <p> <span className="orderText">Время проведения услуги:</span> <span>{m.time}</span></p>
                             
-                                 <Button  variant="dark" className="btnOrder" onClick={() => {window.window.location.reload(); props.deleteOrdersThunk(m._id)}} block>Отменить запись</Button>
+                                 <Button  variant="dark" className="btnOrder" onClick={() => {props.deleteOrdersThunk(m._id); if(props.del) return window.location.reload()}} block>Отменить запись</Button>
 
                                  </Col>
                              }

@@ -1,6 +1,7 @@
 import { login, auth } from '../api/authAPI';
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const SET_PASSWORD_ERR = 'SET_PASSWORD_ERR';
 
 
 let initialState = {
@@ -8,7 +9,8 @@ let initialState = {
     firstName: null,
     lastName: null,
     email: null,
-    isAuth: false    
+    isAuth: false,
+    msgError: null    
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,12 +21,19 @@ const authReducer = (state = initialState, action) => {
                 ...action.payload,
                 isAuth: true
             }
+        case SET_PASSWORD_ERR: 
+            return {
+                ...state, 
+                ...action.payload
+            }
         default:
             return state;
     }
 }
 
 export const setAuthUserData = (userId, firstName, lastName, email, isAuth) => ({type: SET_USER_DATA, payload: {userId, firstName, lastName, email}, isAuth: isAuth})
+
+export const setPasswordError = (msgError) => ({type: SET_PASSWORD_ERR, payload: {msgError}})
 
 
 export const loginThunk = (email, password) => {
@@ -35,6 +44,8 @@ export const loginThunk = (email, password) => {
                     let {id, firstName, lastName, email} = data.user;
                     dispatch(setAuthUserData(id, firstName, lastName, email));
                     localStorage.setItem('token', data.token)
+                } else if(data.success === false) {
+                    dispatch(setPasswordError(data.msg))
                 }
             }
         );

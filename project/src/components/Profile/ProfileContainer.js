@@ -24,7 +24,7 @@ const ProfileContainer = (props) => {
 
     return(
 
-        <Profile  isAuth={props.isAuth} firstName={props.firstName} lastName={props.lastName} emailAuth={props.emailAuth} orders={props.orders} deleteOrdersThunk={props.deleteOrdersThunk}/>
+        <Profile  del={props.del} isAuth={props.isAuth} firstName={props.firstName} lastName={props.lastName} emailAuth={props.emailAuth} orders={props.orders} deleteOrdersThunk={props.deleteOrdersThunk}/>
     )
     
 }
@@ -38,7 +38,8 @@ let mapStateToProps = (state) => {
         firstName: state.auth.firstName,
         lastName: state.auth.lastName,
         emailAuth: state.auth.email,
-        orders: state.profile.orders
+        orders: state.profile.orders,
+        del: state.profile.del
     }
 }
 

@@ -1,9 +1,26 @@
 .backOrder{
     background-color: white;
+    border-radius: 10px;
 }
 
 .opt{
-    height: 35px;
-    border-radius: 5px;
+    height: 37.5px;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 15px;
     border: 1px solid black;
+}
+
+.err{
+    background-color: rgb(236, 91, 91);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    margin-top: 10px;
+}
+
+.backOrder1{
+    background-color: rgb(51, 49, 49);
+    border-radius: 5px;
 }

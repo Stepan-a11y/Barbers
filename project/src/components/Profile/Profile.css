@@ -58,3 +58,7 @@
 .btnOrder{
     margin-top: 40px;
 }
+
+.orderText {
+    font-weight: bold;
+}

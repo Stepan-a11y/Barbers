@@ -25,6 +25,11 @@ const OrderShema = mongoose.Schema({
     date: {
         type: String,
         requred: true
+    },
+
+    time: {
+        type: String,
+        required: true
     }
 })
 

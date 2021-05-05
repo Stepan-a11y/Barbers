@@ -10,7 +10,8 @@ router.post( '/neworder', (req, res) => {
             email: req.body.email,
             masterName: req.body.masterName,
             serviceName: req.body.serviceName,
-            date: req.body.orderDate
+            date: req.body.orderDate,
+            time: req.body.orderTime
         });
         
         try {

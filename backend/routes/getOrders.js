@@ -18,7 +18,10 @@ router.get('/getorders', (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
         Orders.findByIdAndRemove(req.params.id, function(err,orders)
         {
-            if(err) return console.log(err); 
+            if(err) 
+            res.json({success: false});
+            else
+              res.json({success: true}); 
         });
 
   });

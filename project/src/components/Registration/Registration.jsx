@@ -8,6 +8,7 @@ import {setUsers, getUsersThunk} from '../../reducers/validReducer';
 //import './Login.css';
 import { Email, Password, InputFirstName, InputLastName } from '../forms/forms';
 import { email, required } from '../forms/validators';
+import { Redirect } from 'react-router';
 
 
 
@@ -76,6 +77,8 @@ const Registration = (props) => {
     
     let validUser = props.users.map(v => v.email)
     
+
+    if (props.registered) return <Redirect to="login" />
     return (
         <Container>
             
@@ -88,7 +91,8 @@ const Registration = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    users: state.usersValid.users
+    users: state.usersValid.users,
+    registered: state.registration.registered
 })
 
 

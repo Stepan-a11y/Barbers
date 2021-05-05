@@ -7,7 +7,8 @@ let initialState = {
     firstName: null,
     lastName: null,
     email: null,
-    password: null    
+    password: null,
+    registered: false    
 };
 
 
@@ -17,6 +18,7 @@ const registrationReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 ...action.payload,
+                registered: true
             }
         default:
             return state;
@@ -24,7 +26,7 @@ const registrationReducer = (state = initialState, action) => {
 }
 
 
-export const setNewUser = (userId, firstName, lastName, email, password) => ({type: SET_NEW_USER, payload: {userId, firstName, lastName, email, password}})
+export const setNewUser = (userId, firstName, lastName, email, password, registered) => ({type: SET_NEW_USER, payload: {userId, firstName, lastName, email, password}, registered: registered})
 
 
 
@@ -32,8 +34,9 @@ export const registrationThunk = ( firstName, lastName, email, password) => {
     return (dispatch) => {
         registration(firstName, lastName, email, password).then(data =>
             {      
-                   
-                    dispatch(setNewUser(firstName, lastName, email, password));      
+                if(data.success === true) {
+                    dispatch(setNewUser(firstName, lastName, email, password));  
+                }    
             }
         );
     }

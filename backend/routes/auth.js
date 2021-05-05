@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
             });
 
           } else
-    return res.json({success: false, msg: "password not match"});
+    return res.json({success: false, msg: "Неверный пароль!"});
   });
 });
 });
