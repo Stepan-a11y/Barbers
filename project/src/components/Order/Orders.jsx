@@ -20,7 +20,7 @@ const FormOrders = (props) => {
         debugger;
         if (props.ordMast.includes(values.masterName) && props.ordDate.includes(values.orderDate) && props.ordTime.includes(values.orderTime)) {
             throw new SubmissionError({
-              _error: 'Это время уже занято, пожалуйста, выберите другое!'
+              _error: 'Это время уже занято, пожалуйста, выберите другое время или мастера!'
             })
     } else { 
         props.handleSubmit()

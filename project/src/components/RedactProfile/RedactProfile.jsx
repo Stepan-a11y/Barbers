@@ -4,7 +4,7 @@ import {Field, reduxForm} from 'redux-form'
 import { connect } from 'react-redux'
 import { authThunk } from '../../reducers/authReducer'
 import { useEffect } from 'react';
-import { email, required} from '../forms/validators';
+import { required} from '../forms/validators';
 import { InputRedactFirstName, InputRedactLastName } from '../forms/forms';
 import { updUserState, updUserThunk } from '../../reducers/validReducer'
 import { Redirect } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 
 const FormRedact = (props) => {
 
-
+   
     return (
             <form onSubmit={props.handleSubmit}>
                 
@@ -55,12 +55,14 @@ const RedactProfile = (props) => {
     const onSubmit = (formData) => {  
      props.updUserThunk(props.userId, formData.firstName, formData.lastName);     
     }
+
     
+
     if(props.isUpd) return window.location.reload()
     return (
         <Container>
             
-            <RedactProfileReduxForm isUpd={props.isUpd} firstName={props.firstName} lastName={props.lastName} onSubmit={onSubmit} />
+            <RedactProfileReduxForm  isUpd={props.isUpd} firstName={props.firstName} lastName={props.lastName} onSubmit={onSubmit} />
             
         </Container>
     )
@@ -71,7 +73,8 @@ const mapStateToProps = (state) => ({
     userId: state.auth.userId,
     firstName: state.auth.firstName,
     lastName: state.auth.lastName,
-    isUpd: state.usersValid.isUpd
+    isUpd: state.usersValid.isUpd,
+    isAuth: state.auth.isAuth
 })
 
 export default connect (mapStateToProps, {authThunk, updUserState, updUserThunk})(RedactProfile)

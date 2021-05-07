@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Services from './Services';
+import { authThunk } from '../../reducers/authReducer'
 import {setServices, getServicesThunk} from '../../reducers/servicesReducer'
 
 
@@ -9,6 +10,7 @@ class ServicesContainer extends React.Component {
 
         componentDidMount(){
             this.props.getServicesThunk();
+            this.props.authThunk();
         }
 
         componentWillUnmount(){
@@ -29,5 +31,5 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect( mapStateToProps, { setServices, getServicesThunk } )(ServicesContainer);
+export default connect( mapStateToProps, { setServices, getServicesThunk, authThunk } )(ServicesContainer);
 

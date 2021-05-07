@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Masters from './Masters';
+import { authThunk } from '../../reducers/authReducer'
 import {setMasters, getMastersThunk} from '../../reducers/mastersReducer';
 
 
@@ -8,6 +9,7 @@ class MastersContainer extends React.Component{
 
      componentDidMount(){
         this.props.getMastersThunk();
+        this.props.authThunk();
     }
 
     componentWillUnmount(){
@@ -27,4 +29,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect( mapStateToProps, {setMasters, getMastersThunk} )(MastersContainer);
+export default connect( mapStateToProps, {setMasters, getMastersThunk, authThunk} )(MastersContainer);
