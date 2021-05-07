@@ -5,13 +5,16 @@
 ![изображение](https://user-images.githubusercontent.com/59005498/115245117-42212200-a12d-11eb-9369-491f72c45cc0.png)
 
 
-![изображение](https://user-images.githubusercontent.com/59005498/115245301-74cb1a80-a12d-11eb-878a-e48010bfe321.png)
+![изображение](https://user-images.githubusercontent.com/59005498/117326977-d368f600-ae9a-11eb-8cff-900e6f394cdd.png)
 
 
-![изображение](https://user-images.githubusercontent.com/59005498/115245489-a47a2280-a12d-11eb-8eee-9cdbe57dda69.png)
+![изображение](https://user-images.githubusercontent.com/59005498/117327631-7e79af80-ae9b-11eb-9593-e046d9340ebc.png)
 
 
-![изображение](https://user-images.githubusercontent.com/59005498/115245629-ce334980-a12d-11eb-8939-d694f60325e6.png)
+![изображение](https://user-images.githubusercontent.com/59005498/117326696-97359580-ae9a-11eb-9958-9c0ad661a8b2.png)
+
+
+![изображение](https://user-images.githubusercontent.com/59005498/117327293-1aef8200-ae9b-11eb-9cb9-5006dddad16c.png)
 
 
 Для запуска проекта необходимо:
