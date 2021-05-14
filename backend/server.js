@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const conDB = require('./conDB');
-
+require('dotenv').config()
 
 const serv = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 const masters = require('./routes/mastersPage')
 const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
@@ -36,6 +36,10 @@ serv.use('/api', updUsers)
 serv.listen(port, ()=>{
     console.log("connected");
 });
+
+
+
+
 
 mongoose.connect(conDB.barber, { useNewUrlParser: true, useUnifiedTopology: true });
 
