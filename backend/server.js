@@ -4,10 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const conDB = require('./conDB');
-require('dotenv').config()
+
 
 const serv = express();
-const port = process.env.PORT || 3000;
+const port = 3001;
 const masters = require('./routes/mastersPage')
 const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
