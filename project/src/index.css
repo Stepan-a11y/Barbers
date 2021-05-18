@@ -1,5 +1,17 @@
 
+a:hover{
+  color: white;
+  text-decoration: none;
+}
 
+a:visited{
+  color: white;
+  text-decoration: none;
+}
+
+a:link{
+  text-decoration: none;
+}
 
 body {
   margin: 0;

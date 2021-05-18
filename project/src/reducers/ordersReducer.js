@@ -8,6 +8,7 @@ const SET_MASTERS_TO_ORDER = 'SET_MASTERS_TO_ORDER';
 const SET_ORDERS_FOR_SUBMIT = 'SET_ORDERS_FOR_SUBMIT';
 
 
+
 let initialState = {
     orderId: null, 
     email: null,
@@ -15,6 +16,7 @@ let initialState = {
     serviceName: null,
     orderDate: null,
     orderTime: null,
+    isSetting: false,
     servicesOrder: [],
     mastersOrder:[],
     ordersSubmit: []   
@@ -26,7 +28,8 @@ const ordersReducer = (state = initialState, action) => {
         case SET_ORDER_DATA:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                isSetting: true
             }
         case SET_SERVICES_TO_ORDER:
             return {
@@ -48,8 +51,8 @@ const ordersReducer = (state = initialState, action) => {
         }
 } 
 
-export const setOrderData = (orderId, email, masterName, serviceName, orderDate, orderTime) => ({
-    type: SET_ORDER_DATA, payload: {orderId, email, masterName, serviceName, orderDate, orderTime}
+export const setOrderData = (orderId, email, masterName, serviceName, orderDate, orderTime, isSetting) => ({
+    type: SET_ORDER_DATA, payload: {orderId, email, masterName, serviceName, orderDate, orderTime}, isSetting: isSetting
 })
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Main from './Main';
-import { authThunk } from '../../reducers/authReducer'
+import { authThunk, isLogoutSet } from '../../reducers/authReducer'
 
 
 class MainContainer extends React.Component{
@@ -11,6 +11,7 @@ class MainContainer extends React.Component{
     }
 
     render(){
+        if(this.props.isLogout) window.location.reload()
         return(
             <Main />
         )
@@ -18,5 +19,11 @@ class MainContainer extends React.Component{
 }
 
 
+let mapStateToProps = (state) => {
+    return {
+        isLogout: state.auth.isLogout
+    }
+}
 
-export default connect( null, {authThunk} )(MainContainer);
+
+export default connect( mapStateToProps, {authThunk, isLogoutSet} )(MainContainer);

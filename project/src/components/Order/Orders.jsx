@@ -24,7 +24,8 @@ const FormOrders = (props) => {
             })
     } else { 
         props.handleSubmit()
-        alert("Ваша запись добавлена! Перейдите в профиль для просмотра.")
+        alert("Ваша запись успешно добавлена!")
+        
     }
 
 }  
@@ -87,14 +88,17 @@ const Orders = (props) => {
     const ordDate = props.ordersSubmit.map(o => o.date);
     const ordTime = props.ordersSubmit.map(o => o.time);
 
+
     const onSubmit = (formData) => {
         props.ordersThunk(props.email, formData.masterName, formData.serviceName, formData.orderDate, formData.orderTime);
         
     }
     
+
+    if(props.isSetting) return <Redirect to="profile" />
     return (
         <Container>            
-                <OrdersReduxForm  ordMast={ordMast} ordDate={ordDate} ordTime={ordTime} serv={serv} mast={mast} onSubmit={onSubmit} />
+                <OrdersReduxForm  isSetting={props.isSetting} ordMast={ordMast} ordDate={ordDate} ordTime={ordTime} serv={serv} mast={mast} onSubmit={onSubmit} />
         </Container>
         
     )
@@ -106,6 +110,7 @@ const mapStateToProps = (state) => {
         mastersOrder: state.orders.mastersOrder,
         servicesOrder: state.orders.servicesOrder,
         ordersSubmit: state.orders.ordersSubmit,
+        isSetting: state.orders.isSetting,
         email: state.auth.email,
         isAuth: state.auth.isAuth
     }

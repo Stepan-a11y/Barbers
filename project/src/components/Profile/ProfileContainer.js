@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {getOrdersThunk, setOrders, deleteOrdersThunk} from '../../reducers/profileReducer';
-import { authThunk } from '../../reducers/authReducer';
+import { authThunk, isLogoutSet } from '../../reducers/authReducer';
 import Profile from './Profile';
 import { Redirect } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ const ProfileContainer = (props) => {
     
 
     if(!props.isAuth) return <Redirect to="/login" />
+    if(props.isLogout) return <Redirect to="/login" />
 
     return(
 
@@ -39,6 +40,7 @@ let mapStateToProps = (state) => {
         lastName: state.auth.lastName,
         emailAuth: state.auth.email,
         orders: state.profile.orders,
+        isLogout: state.auth.isLogout,
         del: state.profile.del
     }
 }
@@ -46,6 +48,6 @@ let mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {authThunk, getOrdersThunk, setOrders, deleteOrdersThunk})(ProfileContainer);
+export default connect(mapStateToProps, {authThunk, getOrdersThunk, setOrders, deleteOrdersThunk, isLogoutSet})(ProfileContainer);
 
 

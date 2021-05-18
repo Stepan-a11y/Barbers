@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import {Field, reduxForm} from 'redux-form'
 import { Container, Col, Row, Button } from 'react-bootstrap'
 import { registrationThunk } from '../../reducers/registrationReducer'
+import { authThunk } from '../../reducers/authReducer'
 import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form'
 import {setUsers, getUsersThunk} from '../../reducers/validReducer';
-//import './Login.css';
 import { Email, Password, InputFirstName, InputLastName } from '../forms/forms';
 import { email, required } from '../forms/validators';
 import { Redirect } from 'react-router';
@@ -70,6 +70,10 @@ const Registration = (props) => {
         props.getUsersThunk();
     }, [])
 
+    useEffect( () => {
+        props.authThunk();
+    }, [])
+
     
     const onSubmit = (formData) => {  
      props.registrationThunk(formData.firstName, formData.lastName, formData.email, formData.password);
@@ -77,7 +81,7 @@ const Registration = (props) => {
     
     let validUser = props.users.map(v => v.email)
     
-
+    if (props.isAuth) return <Redirect to="/profile"/>
     if (props.registered) return <Redirect to="login" />
     return (
         <Container>
@@ -92,8 +96,9 @@ const Registration = (props) => {
 
 const mapStateToProps = (state) => ({
     users: state.usersValid.users,
-    registered: state.registration.registered
+    registered: state.registration.registered,
+    isAuth: state.auth.isAuth
 })
 
 
-export default connect (mapStateToProps, { registrationThunk, setUsers, getUsersThunk })(Registration)
+export default connect (mapStateToProps, { registrationThunk, setUsers, getUsersThunk, authThunk })(Registration)

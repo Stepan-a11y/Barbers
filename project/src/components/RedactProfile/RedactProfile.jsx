@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import {Field, reduxForm} from 'redux-form'
 import { connect } from 'react-redux'
-import { authThunk } from '../../reducers/authReducer'
+import { authThunk, isLoadingFlag } from '../../reducers/authReducer'
 import { useEffect } from 'react';
 import { required} from '../forms/validators';
 import { InputRedactFirstName, InputRedactLastName } from '../forms/forms';
@@ -56,8 +56,8 @@ const RedactProfile = (props) => {
      props.updUserThunk(props.userId, formData.firstName, formData.lastName);     
     }
 
-    
 
+    
     if(props.isUpd) return window.location.reload()
     return (
         <Container>
@@ -74,7 +74,8 @@ const mapStateToProps = (state) => ({
     firstName: state.auth.firstName,
     lastName: state.auth.lastName,
     isUpd: state.usersValid.isUpd,
+    isLoading: state.auth.isLoading,
     isAuth: state.auth.isAuth
 })
 
-export default connect (mapStateToProps, {authThunk, updUserState, updUserThunk})(RedactProfile)
+export default connect (mapStateToProps, {authThunk, updUserState, updUserThunk, isLoadingFlag})(RedactProfile)

@@ -7,7 +7,7 @@ const conDB = require('./conDB');
 
 
 const serv = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 const masters = require('./routes/mastersPage')
 const services = require('./routes/servicesPage')
 const auth = require('./routes/auth')
@@ -36,7 +36,6 @@ serv.use('/api', updUsers)
 serv.listen(port, ()=>{
     console.log("connected");
 });
-
 
 
 

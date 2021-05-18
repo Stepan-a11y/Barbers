@@ -2,6 +2,8 @@ import { login, auth } from '../api/authAPI';
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_PASSWORD_ERR = 'SET_PASSWORD_ERR';
+const IS_LOADING = 'IS_LOADING';
+const IS_LOGOUT = 'IS_LOGOUT';
 
 
 let initialState = {
@@ -10,7 +12,9 @@ let initialState = {
     lastName: null,
     email: null,
     isAuth: false,
-    msgError: null    
+    isLoading: false,
+    msgError: null,
+    isLogout: false,    
 };
 
 const authReducer = (state = initialState, action) => {
@@ -26,14 +30,25 @@ const authReducer = (state = initialState, action) => {
                 ...state, 
                 ...action.payload
             }
+        case IS_LOADING:
+            return {...state, isLoading: action.isLoading}
+        case IS_LOGOUT:
+                return {...state, isLogout: action.isLogout}
         default:
             return state;
     }
 }
 
-export const setAuthUserData = (userId, firstName, lastName, email, isAuth) => ({type: SET_USER_DATA, payload: {userId, firstName, lastName, email}, isAuth: isAuth})
+export const setAuthUserData = (userId, firstName, lastName, email, isAuth) => (
+    {type: SET_USER_DATA, payload: {userId, firstName, lastName, email}, isAuth:isAuth})
 
 export const setPasswordError = (msgError) => ({type: SET_PASSWORD_ERR, payload: {msgError}})
+
+export const isLoadingFlag = (isLoading) => ({type:IS_LOADING, isLoading})
+
+export const isLogoutSet = (isLogout) => ({type:IS_LOGOUT, isLogout})
+
+
 
 
 export const loginThunk = (email, password) => {
@@ -61,7 +76,7 @@ export const logout = () => {
                     if(data.success === true) {
                         localStorage.removeItem('token');
                         dispatch(setAuthUserData(null, null, null, null, false));
-                        
+                        dispatch(isLogoutSet(true))
                     }
                 }
             );
@@ -75,13 +90,17 @@ export const logout = () => {
 
 export const authThunk = () => {
     return (dispatch) => {
+
+        dispatch(isLoadingFlag(true));
+
         try {
         auth().then(data =>
             {
                 if(data.success === true) {
+                    localStorage.setItem('token', data.token)
                     let {id, firstName, lastName, email} = data.user;
                     dispatch(setAuthUserData(id, firstName, lastName, email));
-                    localStorage.setItem('token', data.token)
+
                 }
             }
         );
